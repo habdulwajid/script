@@ -7,7 +7,7 @@ for site in /etc/nginx/sites-available/*; do
     if [ -d "$wp_path" ]; then
         echo "Disk usage for: $app_name (wp-content)"
         echo "---------------------------------------"
-        (cd "$wp_path" && du -shc ./* 2>/dev/null)
+        (cd "$wp_path" && du -shc ./* | grep G 2>/dev/null)
         echo ""
     else
         echo "wp-content not found for: $app_name"
