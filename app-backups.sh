@@ -26,7 +26,9 @@ for i in $(ls /etc/nginx/sites-available); do
     rm -f "$i-db.sql"
 
     echo "✅ Backup completed for: $i"
-    echo
+    
+    echo "🔐 Resetting ownership for: $i-backup.zip"
+    chown "$i":www-data "$i-backup.zip"
 
     # Return to applications directory for next loop
     cd "$APPLICATIONS_PATH" || exit
